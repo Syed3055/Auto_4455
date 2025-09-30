@@ -1,0 +1,41 @@
+name: Deploy to Fabric UAT and PRO
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'Fabric_item/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+      FABRIC_WORKSPACE_UAT: ${{ secrets.FABRIC_WORKSPACE_UAT }}
+      FABRIC_WORKSPACE_PRO: ${{ secrets.FABRIC_WORKSPACE_PRO }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: pip install requests
+
+    - name: Deploy to UAT
+      run: python deploy_fabric.py
+      env:
+        DEPLOY_TO_PRO: "false"
+
+    - name: Deploy to PRO (only on tag)
+      if: startsWith(github.ref, 'refs/tags/')
+      run: python deploy_fabric.py
+      env:
+        DEPLOY_TO_PRO: "true"
