@@ -1,0 +1,170 @@
+table sales_view
+	lineageTag: 6bf45383-420f-4f3e-8ef1-3c5549e7144e
+	sourceLineageTag: [dbo].[sales_view]
+
+	column Order_ID
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 60c28672-2149-47ba-bfd5-1b61d8d57467
+		sourceLineageTag: Order_ID
+		summarizeBy: none
+		sourceColumn: Order_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Order_Date
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 05d64b58-e9c2-4cc4-9cd8-ee23438d8aff
+		sourceLineageTag: Order_Date
+		summarizeBy: none
+		sourceColumn: Order_Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product_ID
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 431b1977-7dba-44d8-a41f-532639e8cb85
+		sourceLineageTag: Product_ID
+		summarizeBy: none
+		sourceColumn: Product_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product_Category
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 362da475-4a0c-46c1-820f-17ff56cfc033
+		sourceLineageTag: Product_Category
+		summarizeBy: none
+		sourceColumn: Product_Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Buyer_Gender
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 0114b582-4ed3-47f0-ac16-a1b29843cbd7
+		sourceLineageTag: Buyer_Gender
+		summarizeBy: none
+		sourceColumn: Buyer_Gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column Buyer_Age
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: f051d81b-a746-4ec5-895e-a889db91c815
+		sourceLineageTag: Buyer_Age
+		summarizeBy: sum
+		sourceColumn: Buyer_Age
+
+		annotation SummarizationSetBy = Automatic
+
+	column Order_Location
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 95dd0572-1bbd-40d2-a654-b5c550019f04
+		sourceLineageTag: Order_Location
+		summarizeBy: none
+		sourceColumn: Order_Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column International_Shipping
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 4e12c337-2ea5-4b8d-b32d-b667187d44e3
+		sourceLineageTag: International_Shipping
+		summarizeBy: none
+		sourceColumn: International_Shipping
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sales_Price
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 4c9e47b0-0f50-4776-ab91-d7a3a87ea579
+		sourceLineageTag: Sales_Price
+		summarizeBy: sum
+		sourceColumn: Sales_Price
+
+		annotation SummarizationSetBy = Automatic
+
+	column Shipping_Charges
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: f62329b5-935a-49b3-b3f8-2e0d17942dcf
+		sourceLineageTag: Shipping_Charges
+		summarizeBy: sum
+		sourceColumn: Shipping_Charges
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sales_per_Unit
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 95f91cad-fcdf-4e65-bfb7-12d5827a1f67
+		sourceLineageTag: Sales_per_Unit
+		summarizeBy: sum
+		sourceColumn: Sales_per_Unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 9f8ef3f3-d897-42b3-baff-3337e6556b64
+		sourceLineageTag: Quantity
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total_Sales
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 899ea3a3-fc41-4904-8cd6-8ca43a8f204b
+		sourceLineageTag: Total_Sales
+		summarizeBy: sum
+		sourceColumn: Total_Sales
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rating
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 33a8c9d8-2a42-412d-9441-b5211ce72bac
+		sourceLineageTag: Rating
+		summarizeBy: sum
+		sourceColumn: Rating
+
+		annotation SummarizationSetBy = Automatic
+
+	column Review
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: bac187ec-f4c2-42c3-83c1-d7ecefe6e57b
+		sourceLineageTag: Review
+		summarizeBy: none
+		sourceColumn: Review
+
+		annotation SummarizationSetBy = Automatic
+
+	partition sales_view = entity
+		mode: directLake
+		source
+			entityName: sales_view
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

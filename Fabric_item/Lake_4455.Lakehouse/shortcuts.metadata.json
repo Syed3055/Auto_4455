@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Sales_data",
+    "path": "/Tables",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/Sales_data",
+        "itemId": "f2dcfeeb-c2de-4b27-a6c6-7ea8db69bc4a",
+        "workspaceId": "d41bb6a2-8337-498e-96e7-a6eea1418cc6"
+      }
+    }
+  },
+  {
+    "name": "location_wise_sales",
+    "path": "/Tables",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/location_wise_sales",
+        "itemId": "f2dcfeeb-c2de-4b27-a6c6-7ea8db69bc4a",
+        "workspaceId": "d41bb6a2-8337-498e-96e7-a6eea1418cc6"
+      }
+    }
+  },
+  {
+    "name": "enhanced_zomato_dataset_clean",
+    "path": "/Tables",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/enhanced_zomato_dataset_clean",
+        "itemId": "f2dcfeeb-c2de-4b27-a6c6-7ea8db69bc4a",
+        "workspaceId": "d41bb6a2-8337-498e-96e7-a6eea1418cc6"
+      }
+    }
+  }
+]

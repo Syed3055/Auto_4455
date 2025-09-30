@@ -1,0 +1,56 @@
+table location_view
+	lineageTag: 00dca1e3-a4a9-4fce-873b-54cc1447914f
+	sourceLineageTag: [dbo].[location_view]
+
+	column Order_Location
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d156a819-3941-4c80-9853-89b5b4fa2834
+		sourceLineageTag: Order_Location
+		summarizeBy: none
+		sourceColumn: Order_Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product_Category
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: cca63ce2-2894-45ad-af19-df33cf36ab8c
+		sourceLineageTag: Product_Category
+		summarizeBy: none
+		sourceColumn: Product_Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total_Sales
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 5e5d0192-b312-4668-9d3b-be549d79f5b4
+		sourceLineageTag: Total_Sales
+		summarizeBy: sum
+		sourceColumn: Total_Sales
+
+		annotation SummarizationSetBy = Automatic
+
+	column Avg_rating
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 881a45e5-184c-4eef-8f47-510d602cddb1
+		sourceLineageTag: Avg_rating
+		summarizeBy: sum
+		sourceColumn: Avg_rating
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition location_view = entity
+		mode: directLake
+		source
+			entityName: location_view
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+
