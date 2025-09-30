@@ -12,6 +12,17 @@
 # CELL ********************
 
 from pyspark.sql.functions import *
+from pyspark.sql.types import *
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
 
 # METADATA ********************
 
