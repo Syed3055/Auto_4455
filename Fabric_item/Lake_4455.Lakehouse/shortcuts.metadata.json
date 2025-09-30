@@ -1,5 +1,17 @@
 [
   {
+    "name": "swiggy_data",
+    "path": "/Tables",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/swiggy_data",
+        "itemId": "f2dcfeeb-c2de-4b27-a6c6-7ea8db69bc4a",
+        "workspaceId": "d41bb6a2-8337-498e-96e7-a6eea1418cc6"
+      }
+    }
+  },
+  {
     "name": "Sales_data",
     "path": "/Tables",
     "target": {
