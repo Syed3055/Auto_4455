@@ -14,6 +14,8 @@ jobs:
       AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
       AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+      FABRIC_WORKSPACE_UAT: ${{ secrets.FABRIC_WORKSPACE_UAT }}
+      FABRIC_WORKSPACE_PRO: ${{ secrets.FABRIC_WORKSPACE_PRO }}
 
     steps:
     - name: Checkout code
@@ -24,39 +26,16 @@ jobs:
       with:
         python-version: '3.10'
 
-    - name: Install Fabric CICD SDK
-      run: pip install fabric-cicd
-
-    - name: Generate Access Token
-      id: token
-      run: |
-        import requests
-        import os
-
-        url = f"https://login.microsoftonline.com/{os.environ['AZURE_TENANT_ID']}/oauth2/v2.0/token"
-        payload = {
-          'grant_type': 'client_credentials',
-          'client_id': os.environ['AZURE_CLIENT_ID'],
-          'client_secret': os.environ['AZURE_CLIENT_SECRET'],
-          'scope': 'https://graph.microsoft.com/.default'
-        }
-
-        r = requests.post(url, data=payload)
-        token = r.json()['access_token']
-        print(f"::set-output name=access_token::{token}")
-      shell: python
+    - name: Install dependencies
+      run: pip install requests
 
     - name: Deploy to UAT
-      run: |
-        python -m fabric_cicd.deploy \
-          --workspace-id ${{ secrets.FABRIC_WORKSPACE_UAT }} \
-          --source-path ./Fabric_item \
-          --token ${{ steps.token.outputs.access_token }}
+      run: python deploy_fabric.py
+      env:
+        DEPLOY_TO_PRO: "false"
 
     - name: Deploy to PRO (only on tag)
       if: startsWith(github.ref, 'refs/tags/')
-      run: |
-        python -m fabric_cicd.deploy \
-          --workspace-id ${{ secrets.FABRIC_WORKSPACE_PRO }} \
-          --source-path ./Fabric_item \
-          --token ${{ steps.token.outputs.access_token }}
+      run: python deploy_fabric.py
+      env:
+        DEPLOY_TO_PRO: "true"
